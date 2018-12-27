@@ -26,15 +26,56 @@ client.on('ready', () => {
   console.log('')
 });
 
-client.on('guildMemberAdd', member => {
-  member.guild.fetchInvites().then(guildInvites => {
-    const ei = invites[member.guild.id];
-    invites[member.guild.id] = guildInvites;
-    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
-    const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "simo");
-    logChannel.send(`Invited by: <@${inviter.id}>`);
-  });
+const developers = ["520629080333352976"]
+const adminprefix = "L";
+client.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+     
+  if (message.content.startsWith(adminprefix + 'ply')) {
+    client.user.setGame(argresult);
+      message.channel.send(`**✅   ${argresult}**`)
+  } else
+     if (message.content === (adminprefix + "leave")) {
+    message.guild.leave();   
+  } else  
+  if (message.content.startsWith(adminprefix + 'wt')) {
+  client.user.setActivity(argresult, {type:'WATCHING'});//Toxic Codes
+      message.channel.send(`**✅   ${argresult}**`)//Toxic Codes
+  } else
+  if (message.content.startsWith(adminprefix + 'ls')) {
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.send(`**✅   ${argresult}**`)//Toxic Codes
+  } else
+  if (message.content.startsWith(adminprefix + 'st')) {
+    client.user.setGame(argresult, "https://www.twitch.tv/zero");
+      message.channel.send(`**✅**`)//Toxic Codes
+  }
+  if (message.content.startsWith(adminprefix + 'na')) {
+  client.user.setUsername(argresult).then
+      message.channel.send(`Changing The Name To ..**${argresult}** `)
+} else
+  if (message.content.startsWith(adminprefix + 'prefix')) {//Toxic Codes
+  client.user.setPrefix(argresult).then
+      message.channel.send(`Changing Prefix ..**${argresult}** `)//Toxic Codes
+} else
+if (message.content.startsWith(adminprefix + 'av')) {//Toxic Codes
+  client.user.setAvatar(argresult);
+    message.channel.send(`Changing The Avatar To :**${argresult}** `);//Toxic Codes
+}
+});
+
+client.on("message", message => {
+
+            if (message.content.startsWith("fjgklfjd")) {
+                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+ m.send(`${argresult}\n ${m}`);
+})
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
+ message.delete(); 
+};     
 });
 
 client.login(process.env.BOT_TOKEN);
