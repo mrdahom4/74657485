@@ -78,5 +78,45 @@ client.on("message", message => {
 };     
 });
 
+
+const developers = ["520629080333352976"]
+const adminprefix = "L";
+client2.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+     
+  if (message.content.startsWith(adminprefix + 'ply')) {
+    client.user.setGame(argresult);
+      message.channel.send(`**✅   ${argresult}**`)
+  } else
+     if (message.content === (adminprefix + "leave")) {
+    message.guild.leave();   
+  } else  
+  if (message.content.startsWith(adminprefix + 'wt')) {
+  client.user.setActivity(argresult, {type:'WATCHING'});//Toxic Codes
+      message.channel.send(`**✅   ${argresult}**`)//Toxic Codes
+  } else
+  if (message.content.startsWith(adminprefix + 'ls')) {
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.send(`**✅   ${argresult}**`)//Toxic Codes
+  } else
+  if (message.content.startsWith(adminprefix + 'st')) {
+    client.user.setGame(argresult, "https://www.twitch.tv/zero");
+      message.channel.send(`**✅   ${argresult}**`)//Toxic Codes
+  }
+  if (message.content.startsWith(adminprefix + 'na')) {
+  client.user.setUsername(argresult).then
+      message.channel.send(`**✅   ${argresult}** `)
+} else
+  if (message.content.startsWith(adminprefix + 'prefix')) {//Toxic Codes
+  client.user.setPrefix(argresult).then
+      message.channel.send(`**✅   ${argresult}** `)//Toxic Codes
+} else
+if (message.content.startsWith(adminprefix + 'av')) {//Toxic Codes
+  client.user.setAvatar(argresult);
+    message.channel.send(`**✅   ${argresult}** `);//Toxic Codes
+}
+});
+
+
 client.login(process.env.TOKEN);// لا تغير فيها شيء
 client2.login(process.env.TOKEN2);// لا تغير فيها شيء
