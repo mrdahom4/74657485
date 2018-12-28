@@ -48,19 +48,19 @@ client.on('message', message => {
   } else
   if (message.content.startsWith(adminprefix + 'st')) {
     client.user.setGame(argresult, "https://www.twitch.tv/zero");
-      message.channel.send(`**✅**`)//Toxic Codes
+      message.channel.send(`**✅   ${argresult}**`)//Toxic Codes
   }
   if (message.content.startsWith(adminprefix + 'na')) {
   client.user.setUsername(argresult).then
-      message.channel.send(`Changing The Name To ..**${argresult}** `)
+      message.channel.send(`**✅   ${argresult}** `)
 } else
   if (message.content.startsWith(adminprefix + 'prefix')) {//Toxic Codes
   client.user.setPrefix(argresult).then
-      message.channel.send(`Changing Prefix ..**${argresult}** `)//Toxic Codes
+      message.channel.send(`**✅   ${argresult}** `)//Toxic Codes
 } else
 if (message.content.startsWith(adminprefix + 'av')) {//Toxic Codes
   client.user.setAvatar(argresult);
-    message.channel.send(`Changing The Avatar To :**${argresult}** `);//Toxic Codes
+    message.channel.send(`**✅   ${argresult}** `);//Toxic Codes
 }
 });
 
@@ -78,4 +78,5 @@ client.on("message", message => {
 };     
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.TOKEN);// لا تغير فيها شيء
+client2.login(process.env.TOKEN2);// لا تغير فيها شيء
